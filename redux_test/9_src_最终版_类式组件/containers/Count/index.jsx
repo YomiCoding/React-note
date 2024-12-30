@@ -6,34 +6,34 @@ import {
 	incrementAsync
 } from '../../redux/actions/count'
 //引入connect用于连接UI组件与redux
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 //定义UI组件
 class Count extends Component {
 
-	state = {carName:'奔驰c63'}
+	state = { carName: '奔驰c63' }
 
 	//加法
-	increment = ()=>{
-		const {value} = this.selectNumber
-		this.props.increment(value*1)
+	increment = () => {
+		const { value } = this.selectNumber
+		this.props.increment(value * 1)
 	}
 	//减法
-	decrement = ()=>{
-		const {value} = this.selectNumber
-		this.props.decrement(value*1)
+	decrement = () => {
+		const { value } = this.selectNumber
+		this.props.decrement(value * 1)
 	}
 	//奇数再加
-	incrementIfOdd = ()=>{
-		const {value} = this.selectNumber
-		if(this.props.count % 2 !== 0){
-			this.props.increment(value*1)
+	incrementIfOdd = () => {
+		const { value } = this.selectNumber
+		if (this.props.count % 2 !== 0) {
+			this.props.increment(value * 1)
 		}
 	}
 	//异步加
-	incrementAsync = ()=>{
-		const {value} = this.selectNumber
-		this.props.incrementAsync(value*1,500)
+	incrementAsync = () => {
+		const { value } = this.selectNumber
+		this.props.incrementAsync(value * 1, 500)
 	}
 
 	render() {
@@ -60,9 +60,14 @@ class Count extends Component {
 export default connect(
 	// state 可以拿到所有redux内存储的数据
 	state => ({
-		count:state.count,
-		personCount:state.persons.length
+		count: state.count,  // 将 Redux 中的 `count` 状态映射为 `this.props.count`
+		personCount: state.persons.length  // 将 Redux 中的 `persons` 数组长度映射为 `this.props.personCount`
 	}),
-	{increment,decrement,incrementAsync}
+	{ increment, decrement, incrementAsync } // 将 action creators 映射为 `this.props` 的方法
 )(Count)
 
+// 总结
+// props 的来源：
+// Redux 的 state：通过 mapStateToProps 将 Redux 的状态映射为 props。
+// Action Creators：通过 mapDispatchToProps 将 action creators 映射为 props 的方法。
+// 这些 props 通过 connect 函数自动传递给 Count 组件，使得组件可以访问 Redux 的状态和派发 actions。

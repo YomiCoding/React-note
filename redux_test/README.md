@@ -79,7 +79,15 @@
     				import {composeWithDevTools} from 'redux-devtools-extension'
     				const store = createStore(allReducer,composeWithDevTools(applyMiddleware(thunk)))
 
-## 8.求和案例\_react-redux 最终版
+## 8.求和案例\_react-redux 最终版 类式组件
 
     		(1).所有变量名字要规范，尽量触发对象的简写形式。
     		(2).reducers文件夹中，编写index.js专门用于汇总并暴露所有的reducer.
+
+## 9.求和案例\_react-redux 最终版 函数式组件
+
+    函数式组件：使用 useState、useEffect、useSelector 和 useDispatch 等 React Hooks 来替代 Class 组件中的生命周期方法和状态管理。
+
+    Redux：使用 useSelector 来获取 Redux 状态，使用 useDispatch 来派发 actions。
+
+    其他部分：Redux 的 action creators、reducers 和 store 配置保持不变
